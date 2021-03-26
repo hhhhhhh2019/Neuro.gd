@@ -85,6 +85,16 @@ func train(ld, params = {}):
 				correct(layouts[i], layouts[i+1], weights[i], koof)
 
 
+func evolute_from_parent(parent):
+	if not len(layouts) == len(parent.layouts) or\
+		not len(weights) == len(parent.weights):
+			return
+	
+	for i in range(len(weights)):
+		for j in range(len(weights[i])):
+			weights[i][j] + parent.weights[i][j] + (randf() * 2 - 1)
+
+
 func _init(nc):
 	if len(nc) < 2:
 		print("Lays count must be more 2!")
